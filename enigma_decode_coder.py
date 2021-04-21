@@ -24,6 +24,8 @@ def rotoing():
     if state%(26*26):
         r3=r3[1:]+r3[0]
 plain = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+for i in range(1000):
+    plain+='a'
 cipher=''
 state =0
 for oc in plain:
@@ -31,3 +33,10 @@ for oc in plain:
     cipher += enigma_coder(oc)
     rotoing()
 print (cipher)
+for i in range(len(cipher)-1):
+    if cipher[i]==cipher[i+1]:
+        print(i+1)
+        print('w')
+m= open('./massage.enigma', 'wb')
+pickle.dump((cipher),m)
+m.close()
